@@ -86,12 +86,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <!-- Name -->
+        <!-- Name / Email -->
         <TextView
             android:id="@+id/lblName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/full_name"
+            android:text="EMAIL OR USERNAME"
             android:textStyle="bold"
             android:textColor="#666666"
             android:layout_marginStart="24dp"
@@ -107,10 +107,12 @@
             android:layout_marginEnd="24dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/bg_edittext"
-            android:hint="@string/enter_your_name"
-            android:inputType="textPersonName"
-            android:autofillHints="name"
+            android:hint="Enter email or username"
+            android:inputType="textEmailAddress"
+            android:autofillHints="emailAddress"
             android:padding="16dp"
+            android:textColor="@color/input_text_dark"
+            android:textColorHint="@color/input_hint_gray"
             app:layout_constraintTop_toBottomOf="@id/lblName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -140,6 +142,8 @@
             android:inputType="textPassword"
             android:autofillHints="password"
             android:padding="16dp"
+            android:textColor="@color/input_text_dark"
+            android:textColorHint="@color/input_hint_gray"
             app:layout_constraintTop_toBottomOf="@id/lblPassword"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -174,6 +178,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
+        <!-- Google Sign In Button -->
+        <Button
+            android:id="@+id/btnGoogleSignIn"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:text="Sign in with Google"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#131A33"
+            android:background="@drawable/bg_command_button"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <!-- Register -->
         <TextView
             android:id="@+id/txtRegister"
@@ -184,7 +206,7 @@
             android:textColor="#444444"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="30dp"
-            app:layout_constraintTop_toBottomOf="@id/btnLogin"
+            app:layout_constraintTop_toBottomOf="@id/btnGoogleSignIn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

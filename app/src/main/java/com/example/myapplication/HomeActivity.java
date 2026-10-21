@@ -15,8 +15,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
+
+import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.tilesource.OnlineTileSourceBase;
+import org.osmdroid.tileprovider.tilesource.XYTileSource;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,12 +35,35 @@ public class HomeActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 1001;
     private boolean isMapExpanded = false;
 
+    private MapView osmMapView;
+    private Marker deviceMarker;
+
+    // OpenStreetMap Community Tile Source (Free, Open-Source, HTTPS, No API key required)
+    public static final OnlineTileSourceBase OPENSTREETMAP_TILES = new XYTileSource(
+            "OSM_France",
+            0, 19, 256, ".png",
+            new String[]{
+                    "https://a.tile.openstreetmap.fr/osmfr/",
+                    "https://b.tile.openstreetmap.fr/osmfr/",
+                    "https://c.tile.openstreetmap.fr/osmfr/"
+            },
+            "© OpenStreetMap contributors, © OSM France"
+    );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 1. Configure osmdroid before inflating layout (OSM Tile Usage Policy compliant)
+        File cacheDir = new File(getCacheDir(), "osmdroid");
+        Configuration.getInstance().setOsmdroidBasePath(cacheDir);
+        Configuration.getInstance().setOsmdroidTileCache(cacheDir);
+        Configuration.getInstance().setUserAgentValue("SafeTrack/1.0 (" + getPackageName() + ")");
+        Configuration.getInstance().load(getApplicationContext(), getSharedPreferences("osmdroid", MODE_PRIVATE));
+
         setContentView(R.layout.acitivity_home);
 
-        // Request runtime permissions (GPS/Location, Notifications, Audio) for first-time user
+        // Request runtime permissions (GPS/Location, Notifications)
         checkAndRequestPermissions();
 
         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
@@ -92,6 +125,9 @@ public class HomeActivity extends AppCompatActivity {
         }
         tvChildDetails.setText(details.toString());
 
+        // Initialize OpenStreetMap (osmdroid) MapView
+        setupOpenStreetMap();
+
         // Full map toggle functionality
         TextView tvFullMap = findViewById(R.id.tv_full_map);
         MaterialCardView cardMap = findViewById(R.id.card_map);
@@ -102,13 +138,11 @@ public class HomeActivity extends AppCompatActivity {
                 int density = (int) getResources().getDisplayMetrics().density;
 
                 if (!isMapExpanded) {
-                    // Expand map window
                     params.height = 450 * density;
                     tvFullMap.setText("Close map");
                     isMapExpanded = true;
                 } else {
-                    // Collapse map window back to normal size
-                    params.height = 200 * density;
+                    params.height = 220 * density;
                     tvFullMap.setText(getString(R.string.full_map));
                     isMapExpanded = false;
                 }
@@ -155,6 +189,55 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    private void setupOpenStreetMap() {
+        osmMapView = findViewById(R.id.osmMapView);
+        if (osmMapView != null) {
+            // Use OpenStreetMap France Community tile source (Free, Open-Source, HTTPS, No API key)
+            osmMapView.setTileSource(OPENSTREETMAP_TILES);
+            osmMapView.setMultiTouchControls(true);
+
+            // Default position: Last known / tracked coordinates
+            GeoPoint startPoint = new GeoPoint(19.0760, 72.8777);
+            osmMapView.getController().setZoom(16.5);
+            osmMapView.getController().setCenter(startPoint);
+
+            // Create Tracked Device Marker
+            deviceMarker = new Marker(osmMapView);
+            deviceMarker.setPosition(startPoint);
+            deviceMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+            deviceMarker.setTitle("Tracked Device Location");
+            deviceMarker.setSnippet("MG Road, Bandra West (GPS ±5 m)");
+            osmMapView.getOverlays().add(deviceMarker);
+            osmMapView.invalidate();
+        }
+    }
+
+    public void updateDeviceLocationOnMap(double lat, double lng, String locationName) {
+        if (osmMapView != null && deviceMarker != null) {
+            GeoPoint newPoint = new GeoPoint(lat, lng);
+            deviceMarker.setPosition(newPoint);
+            deviceMarker.setSnippet(locationName);
+            osmMapView.getController().animateTo(newPoint);
+            osmMapView.invalidate();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (osmMapView != null) {
+            osmMapView.onResume();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (osmMapView != null) {
+            osmMapView.onPause();
+        }
+    }
+
     private void checkAndRequestPermissions() {
         List<String> permissionsNeeded = new ArrayList<>();
 
@@ -188,7 +271,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
             if (allGranted) {
-                Toast.makeText(this, "All permissions granted! SafeTrack active.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Permissions granted! SafeTrack active.", Toast.LENGTH_SHORT).show();
             }
         }
     }

@@ -6,28 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color"
-    tools:context=".MainActivity">
+    tools:context=".AlertHistoryActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:padding="16dp">
 
-            <!-- Title -->
+            <!-- Title & Subtitle -->
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/alert_history"
+                android:layout_marginTop="8dp"
+                android:letterSpacing="0.08"
+                android:text="SAFETY EVENT LOG"
                 android:textColor="@color/text_primary"
-                android:textSize="28sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -36,19 +38,21 @@
                 android:id="@+id/tv_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Categorized by signal frequency and urgency level"
-                android:textColor="@color/text_secondary"
-                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:letterSpacing="0.04"
+                android:text="LIVE MONITORING • REAL-TIME SIGNAL FREQUENCY"
+                android:textColor="@color/text_hud_cyan"
+                android:textSize="11sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
-            <!-- Chips / Filter Tabs -->
+            <!-- Filter Chips Bar -->
             <HorizontalScrollView
                 android:id="@+id/chip_scroll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:scrollbars="none"
                 app:layout_constraintTop_toBottomOf="@id/tv_subtitle">
 
@@ -62,11 +66,12 @@
                         android:id="@+id/chip_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_chip_selected"
-                        android:paddingHorizontal="24dp"
+                        android:background="@drawable/bg_command_button"
+                        android:paddingHorizontal="18dp"
                         android:paddingVertical="8dp"
                         android:text="@string/all"
-                        android:textColor="@color/white"
+                        android:textColor="@color/text_hud_cyan"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <!-- SOS Chip -->
@@ -74,12 +79,13 @@
                         android:id="@+id/chip_sos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="8dp"
                         android:background="@drawable/bg_chip_unselected"
-                        android:paddingHorizontal="24dp"
+                        android:paddingHorizontal="18dp"
                         android:paddingVertical="8dp"
                         android:text=" SOS "
                         android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <!-- Daily Updates Chip -->
@@ -87,21 +93,22 @@
                         android:id="@+id/chip_daily"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="8dp"
                         android:background="@drawable/bg_chip_unselected"
-                        android:paddingHorizontal="24dp"
+                        android:paddingHorizontal="18dp"
                         android:paddingVertical="8dp"
                         android:text="Daily Updates"
                         android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <!-- Alerts List Container -->
+            <!-- Event Timeline Container -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@id/chip_scroll">
 
@@ -110,23 +117,27 @@
                     android:id="@+id/card_sos_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="0dp">
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="@color/card_dark"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/sos_red"
+                    app:strokeWidth="1.5dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="20dp">
+                        android:padding="16dp">
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/icon_sos_1"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
                             app:cardBackgroundColor="@color/sos_red_light"
-                            app:cardCornerRadius="12dp"
+                            app:cardCornerRadius="10dp"
                             app:cardElevation="0dp"
+                            app:strokeColor="@color/sos_red"
+                            app:strokeWidth="1dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
@@ -134,6 +145,7 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_gravity="center"
+                                android:contentDescription="SOS Emergency Icon"
                                 android:src="@android:drawable/ic_dialog_alert"
                                 app:tint="@color/sos_red" />
                         </com.google.android.material.card.MaterialCardView>
@@ -142,10 +154,11 @@
                             android:id="@+id/tv_sos_title_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="Critical SOS Alert"
-                            android:textColor="@color/text_primary"
-                            android:textSize="16sp"
+                            android:layout_marginStart="12dp"
+                            android:letterSpacing="0.04"
+                            android:text="CRITICAL SOS EMERGENCY 🚨"
+                            android:textColor="@color/sos_red"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@id/icon_sos_1"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -155,41 +168,42 @@
                             android:layout_height="wrap_content"
                             android:text="Today, 9:42 AM"
                             android:textColor="@color/text_secondary"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/tv_sos_desc_1"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="MG Road Metro Station · High Signal Frequency (5 taps / 30s)"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/text_primary"
                             android:textSize="13sp"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@id/tv_sos_title_1"
                             app:layout_constraintTop_toBottomOf="@id/tv_sos_title_1" />
 
-                        <com.google.android.material.card.MaterialCardView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            app:cardBackgroundColor="#FCECEC"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="0dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_red_badge"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp"
                             app:layout_constraintStart_toStartOf="@id/tv_sos_title_1"
                             app:layout_constraintTop_toBottomOf="@id/tv_sos_desc_1">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingHorizontal="12dp"
-                                android:paddingVertical="4dp"
-                                android:text="Critical SOS Emergency 🚨"
+                                android:letterSpacing="0.05"
+                                android:text="SEVERITY: CRITICAL HIGH PRIORITY"
                                 android:textColor="@color/sos_red"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold" />
-                        </com.google.android.material.card.MaterialCardView>
+                        </LinearLayout>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -198,23 +212,27 @@
                     android:id="@+id/card_daily_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="0dp">
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="@color/card_dark"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/accent_green"
+                    app:strokeWidth="1dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="20dp">
+                        android:padding="16dp">
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/icon_daily_1"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            app:cardBackgroundColor="#E8F5E9"
-                            app:cardCornerRadius="12dp"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            app:cardBackgroundColor="@color/badge_green_bg"
+                            app:cardCornerRadius="10dp"
                             app:cardElevation="0dp"
+                            app:strokeColor="@color/accent_green"
+                            app:strokeWidth="1dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
@@ -222,18 +240,20 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_gravity="center"
+                                android:contentDescription="Daily Location Update"
                                 android:src="@android:drawable/ic_menu_mylocation"
-                                app:tint="#2E7D32" />
+                                app:tint="@color/accent_green" />
                         </com.google.android.material.card.MaterialCardView>
 
                         <TextView
                             android:id="@+id/tv_daily_title_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="Daily Location Update"
-                            android:textColor="@color/text_primary"
-                            android:textSize="16sp"
+                            android:layout_marginStart="12dp"
+                            android:letterSpacing="0.04"
+                            android:text="DAILY LOCATION UPDATE 🟢"
+                            android:textColor="@color/text_hud_emerald"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@id/icon_daily_1"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -243,41 +263,42 @@
                             android:layout_height="wrap_content"
                             android:text="Today, 2:15 PM"
                             android:textColor="@color/text_secondary"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/tv_daily_desc_1"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="St. Xavier's College Campus · Normal Routine Signal (1 / 10m)"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/text_primary"
                             android:textSize="13sp"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@id/tv_daily_title_1"
                             app:layout_constraintTop_toBottomOf="@id/tv_daily_title_1" />
 
-                        <com.google.android.material.card.MaterialCardView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            app:cardBackgroundColor="#E8F5E9"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="0dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_status_active_chip"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp"
                             app:layout_constraintStart_toStartOf="@id/tv_daily_title_1"
                             app:layout_constraintTop_toBottomOf="@id/tv_daily_desc_1">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingHorizontal="12dp"
-                                android:paddingVertical="4dp"
-                                android:text="Daily Routine Update 🟢"
-                                android:textColor="#2E7D32"
-                                android:textSize="12sp"
+                                android:letterSpacing="0.05"
+                                android:text="STATUS: NORMAL ROUTINE"
+                                android:textColor="@color/text_hud_emerald"
+                                android:textSize="10sp"
                                 android:textStyle="bold" />
-                        </com.google.android.material.card.MaterialCardView>
+                        </LinearLayout>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -286,23 +307,27 @@
                     android:id="@+id/card_daily_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="0dp">
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="@color/card_dark"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/accent_green"
+                    app:strokeWidth="1dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="20dp">
+                        android:padding="16dp">
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/icon_daily_2"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            app:cardBackgroundColor="#E8F5E9"
-                            app:cardCornerRadius="12dp"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            app:cardBackgroundColor="@color/badge_green_bg"
+                            app:cardCornerRadius="10dp"
                             app:cardElevation="0dp"
+                            app:strokeColor="@color/accent_green"
+                            app:strokeWidth="1dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
@@ -310,18 +335,20 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_gravity="center"
+                                android:contentDescription="Daily Location Update"
                                 android:src="@android:drawable/ic_menu_mylocation"
-                                app:tint="#2E7D32" />
+                                app:tint="@color/accent_green" />
                         </com.google.android.material.card.MaterialCardView>
 
                         <TextView
                             android:id="@+id/tv_daily_title_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="Daily Location Update"
-                            android:textColor="@color/text_primary"
-                            android:textSize="16sp"
+                            android:layout_marginStart="12dp"
+                            android:letterSpacing="0.04"
+                            android:text="SCHOOL ZONE ENTRY 🟢"
+                            android:textColor="@color/text_hud_emerald"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@id/icon_daily_2"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -331,41 +358,42 @@
                             android:layout_height="wrap_content"
                             android:text="Today, 11:30 AM"
                             android:textColor="@color/text_secondary"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/tv_daily_desc_2"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="School Safety Zone · Normal Routine Signal (1 / 10m)"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/text_primary"
                             android:textSize="13sp"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@id/tv_daily_title_2"
                             app:layout_constraintTop_toBottomOf="@id/tv_daily_title_2" />
 
-                        <com.google.android.material.card.MaterialCardView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            app:cardBackgroundColor="#E8F5E9"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="0dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_status_active_chip"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp"
                             app:layout_constraintStart_toStartOf="@id/tv_daily_title_2"
                             app:layout_constraintTop_toBottomOf="@id/tv_daily_desc_2">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingHorizontal="12dp"
-                                android:paddingVertical="4dp"
-                                android:text="Daily Routine Update 🟢"
-                                android:textColor="#2E7D32"
-                                android:textSize="12sp"
+                                android:letterSpacing="0.05"
+                                android:text="STATUS: NORMAL ROUTINE"
+                                android:textColor="@color/text_hud_emerald"
+                                android:textSize="10sp"
                                 android:textStyle="bold" />
-                        </com.google.android.material.card.MaterialCardView>
+                        </LinearLayout>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -374,23 +402,27 @@
                     android:id="@+id/card_sos_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="0dp">
+                    android:layout_marginBottom="12dp"
+                    app:cardBackgroundColor="@color/card_dark"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/sos_red"
+                    app:strokeWidth="1.5dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="20dp">
+                        android:padding="16dp">
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/icon_sos_2"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
                             app:cardBackgroundColor="@color/sos_red_light"
-                            app:cardCornerRadius="12dp"
+                            app:cardCornerRadius="10dp"
                             app:cardElevation="0dp"
+                            app:strokeColor="@color/sos_red"
+                            app:strokeWidth="1dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
@@ -398,6 +430,7 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_gravity="center"
+                                android:contentDescription="SOS Emergency Icon"
                                 android:src="@android:drawable/ic_dialog_alert"
                                 app:tint="@color/sos_red" />
                         </com.google.android.material.card.MaterialCardView>
@@ -406,10 +439,11 @@
                             android:id="@+id/tv_sos_title_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="Critical SOS Alert"
-                            android:textColor="@color/text_primary"
-                            android:textSize="16sp"
+                            android:layout_marginStart="12dp"
+                            android:letterSpacing="0.04"
+                            android:text="CRITICAL SOS EMERGENCY 🚨"
+                            android:textColor="@color/sos_red"
+                            android:textSize="14sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@id/icon_sos_2"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -419,41 +453,42 @@
                             android:layout_height="wrap_content"
                             android:text="Sat, 7:52 PM"
                             android:textColor="@color/text_secondary"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/tv_sos_desc_2"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="Carter Road Promenade · High Signal Frequency (5 taps / 30s)"
-                            android:textColor="@color/text_secondary"
+                            android:textColor="@color/text_primary"
                             android:textSize="13sp"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@id/tv_sos_title_2"
                             app:layout_constraintTop_toBottomOf="@id/tv_sos_title_2" />
 
-                        <com.google.android.material.card.MaterialCardView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            app:cardBackgroundColor="#FCECEC"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="0dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_red_badge"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp"
                             app:layout_constraintStart_toStartOf="@id/tv_sos_title_2"
                             app:layout_constraintTop_toBottomOf="@id/tv_sos_desc_2">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingHorizontal="12dp"
-                                android:paddingVertical="4dp"
-                                android:text="Critical SOS Emergency 🚨"
+                                android:letterSpacing="0.05"
+                                android:text="SEVERITY: CRITICAL HIGH PRIORITY"
                                 android:textColor="@color/sos_red"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold" />
-                        </com.google.android.material.card.MaterialCardView>
+                        </LinearLayout>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -467,7 +502,7 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/header_dark"
         app:itemIconTint="@color/text_secondary"
         app:itemTextColor="@color/text_secondary"
         app:labelVisibilityMode="labeled"

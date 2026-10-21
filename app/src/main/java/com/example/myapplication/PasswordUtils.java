@@ -15,6 +15,9 @@ public class PasswordUtils {
 
     // Hashes password + salt using SHA-256 algorithm
     public static String hashPassword(String password, String salt) {
+        if (password == null || salt == null || password.trim().isEmpty() || salt.trim().isEmpty()) {
+            return null;
+        }
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             digest.reset();
@@ -32,8 +35,11 @@ public class PasswordUtils {
         if (enteredPassword == null || storedHash == null || storedSalt == null) {
             return false;
         }
+        if (enteredPassword.trim().isEmpty() || storedHash.trim().isEmpty() || storedSalt.trim().isEmpty()) {
+            return false; // Prevent empty/blank hash verification for Google accounts or blank passwords
+        }
         String calculatedHash = hashPassword(enteredPassword, storedSalt);
-        return storedHash.equalsIgnoreCase(calculatedHash);
+        return calculatedHash != null && storedHash.equalsIgnoreCase(calculatedHash);
     }
 
     private static String bytesToHex(byte[] bytes) {

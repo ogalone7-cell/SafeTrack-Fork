@@ -1,95 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
     android:height="108dp"
-    android:viewportWidth="512"
-    android:viewportHeight="512">
-  <group android:scaleX="0.6111111"
-      android:scaleY="0.6111111"
-      android:translateX="99.55556"
-      android:translateY="99.55556">
-    <path
-        android:pathData="M115,0L397,0A115,115 0,0 1,512 115L512,397A115,115 0,0 1,397 512L115,512A115,115 0,0 1,0 397L0,115A115,115 0,0 1,115 0z">
-      <aapt:attr name="android:fillColor">
-        <gradient
-            android:startX="-0"
-            android:startY="0"
-            android:endX="512"
-            android:endY="512"
-            android:type="linear">
-          <item android:offset="0" android:color="#FF1A2342"/>
-          <item android:offset="1" android:color="#FF0E1326"/>
-        </gradient>
-      </aapt:attr>
-    </path>
-    <path
-        android:pathData="M116,4L396,4A112,112 0,0 1,508 116L508,396A112,112 0,0 1,396 508L116,508A112,112 0,0 1,4 396L4,116A112,112 0,0 1,116 4z"
-        android:strokeAlpha="0.3"
-        android:strokeWidth="3"
-        android:fillColor="#00000000">
-      <aapt:attr name="android:strokeColor">
-        <gradient
-            android:startX="4"
-            android:startY="4"
-            android:endX="508"
-            android:endY="508"
-            android:type="linear">
-          <item android:offset="0" android:color="#FFF3CA85"/>
-          <item android:offset="0.5" android:color="#FFD9A05B"/>
-          <item android:offset="1" android:color="#FFA7722E"/>
-        </gradient>
-      </aapt:attr>
-    </path>
-    <path
-        android:pathData="M256,106L371,166L371,276C371,351 256,406 256,406C256,406 141,351 141,276L141,166Z"
-        android:strokeLineJoin="round"
-        android:strokeWidth="18"
-        android:fillColor="#00000000"
-        android:strokeLineCap="round">
-      <aapt:attr name="android:strokeColor">
-        <gradient
-            android:startX="141"
-            android:startY="106"
-            android:endX="371"
-            android:endY="406"
-            android:type="linear">
-          <item android:offset="0" android:color="#FFF3CA85"/>
-          <item android:offset="0.5" android:color="#FFD9A05B"/>
-          <item android:offset="1" android:color="#FFA7722E"/>
-        </gradient>
-      </aapt:attr>
-    </path>
-    <path
-        android:pathData="M191,266Q221,266 236,226T276,306T321,266"
-        android:strokeLineJoin="round"
-        android:strokeWidth="14"
-        android:fillColor="#00000000"
-        android:strokeColor="#FFFFFF"
-        android:strokeLineCap="round"/>
-    <path
-        android:pathData="M256,266m-14,0a14,14 0,1 1,28 0a14,14 0,1 1,-28 0">
-      <aapt:attr name="android:fillColor">
-        <gradient
-            android:startX="242"
-            android:startY="252"
-            android:endX="270"
-            android:endY="280"
-            android:type="linear">
-          <item android:offset="0" android:color="#FFF3CA85"/>
-          <item android:offset="0.5" android:color="#FFD9A05B"/>
-          <item android:offset="1" android:color="#FFA7722E"/>
-        </gradient>
-      </aapt:attr>
-    </path>
-    <path
-        android:pathData="M256,266m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0"
-        android:fillColor="#131A33"/>
-    <path
-        android:pathData="M256,266m-38,0a38,38 0,1 1,76 0a38,38 0,1 1,-76 0"
-        android:strokeAlpha="0.6"
-        android:strokeWidth="3"
-        android:fillColor="#00000000"
-        android:strokeColor="#D9A05B"
-        android:fillAlpha="0.6"/>
-  </group>
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <group
+        android:translateX="0"
+        android:translateY="0">
+
+        <!-- Outer Radar Signal Rings -->
+        <path
+            android:pathData="M54,42m-22,0a22,22 0,1,1 44,0a22,22 0,1,1 -44,0"
+            android:strokeWidth="1.5"
+            android:strokeColor="#3300F2FE"
+            android:fillColor="#00000000" />
+        <path
+            android:pathData="M54,42m-16,0a16,16 0,1,1 32,0a16,16 0,1,1 -32,0"
+            android:strokeWidth="1.5"
+            android:strokeColor="#6600C9FF"
+            android:fillColor="#00000000" />
+
+        <!-- Protection Shield Outer Outline -->
+        <path
+            android:pathData="M54,22 L76,30 V54 C76,68 54,80 54,80 C54,80 32,68 32,54 V30 Z"
+            android:strokeWidth="3"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:fillColor="#1F0F172A">
+            <aapt:attr name="android:strokeColor">
+                <gradient
+                    android:startX="32"
+                    android:startY="22"
+                    android:endX="76"
+                    android:endY="80"
+                    android:type="linear">
+                    <item android:offset="0.0" android:color="#FF00F2FE" />
+                    <item android:offset="1.0" android:color="#FF00C9FF" />
+                </gradient>
+            </aapt:attr>
+        </path>
+
+        <!-- Inner Glow Shield Fill -->
+        <path
+            android:pathData="M54,25 L73,32 V53 C73,65.5 54,76 54,76 C54,76 35,65.5 35,53 V32 Z"
+            android:fillColor="#2200F2FE" />
+
+        <!-- Location Pin (Centered inside Shield) -->
+        <path
+            android:pathData="M54,34 C48.5,34 44,38.5 44,44 C44,51.5 54,63 54,63 C54,63 64,51.5 64,44 C64,38.5 59.5,34 54,34 Z">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:startX="44"
+                    android:startY="34"
+                    android:endX="64"
+                    android:endY="63"
+                    android:type="linear">
+                    <item android:offset="0.0" android:color="#FF00F2FE" />
+                    <item android:offset="1.0" android:color="#FF06B6D4" />
+                </gradient>
+            </aapt:attr>
+        </path>
+
+        <!-- White Inner Pin Core Dot -->
+        <path
+            android:pathData="M54,44m-4,0a4,4 0,1,1 8,0a4,4 0,1,1 -8,0"
+            android:fillColor="#FFFFFF" />
+
+        <!-- Top Safety Star Accent -->
+        <path
+            android:pathData="M54,17 L55.5,20.5 L59,21 L56.2,23.5 L57,27 L54,25 L51,27 L51.8,23.5 L49,21 L52.5,20.5 Z"
+            android:fillColor="#FF00F2FE" />
+
+    </group>
 </vector>

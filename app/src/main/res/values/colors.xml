@@ -2,27 +2,44 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="bg_color">#F7F8F3</color>
-    <color name="text_primary">#1A1A1A</color>
-    <color name="text_secondary">#74777F</color>
-    <color name="accent_green">#2D6A4F</color>
-    <color name="badge_green_bg">#E8F3EF</color>
-    <color name="avatar_bg">#D9A05B</color>
-    <color name="icon_btn_bg">#F1F3EB</color>
-    <color name="map_placeholder">#E5E7EB</color>
-    <color name="header_dark">#131A33</color>
-    <color name="button_gold">#D9A05B</color>
-    <color name="text_link">#2D6A4F</color>
-    <color name="sos_red">#D63D33</color>
-    <color name="sos_red_light">#F8E7E7</color>
-    <color name="avatar_mp">#E0F2F1</color>
-    <color name="avatar_rs">#FFF3E0</color>
-    <color name="fall_yellow">#B45309</color>
-    <color name="fall_yellow_light">#FEF3C7</color>
-    <color name="battery_grey">#4B5563</color>
-    <color name="battery_grey_light">#F3F4F6</color>
-    <color name="chip_selected">#131A33</color>
-    <color name="badge_gold_bg">#FDEBD0</color>
-    <color name="relation_green">#2D6A4F</color>
-    <color name="device_card_sub">#1C243F</color>
+
+    <!-- Futuristic Command Dashboard Theme -->
+    <color name="bg_color">#070A12</color>          <!-- Dark Near-Black Canvas -->
+    <color name="header_dark">#0F172A</color>      <!-- Command Slate Header -->
+    <color name="card_dark">#131C31</color>        <!-- Command Card Surface -->
+    <color name="device_card_sub">#1A243F</color>  <!-- Glass Sub Panel -->
+    <color name="card_border">#223055</color>      <!-- Luminous Border Stroke -->
+    <color name="card_border_bright">#38BDF8</color> <!-- Bright Luminous Stroke -->
+
+    <!-- High-Tech Accent Palette -->
+    <color name="accent_green">#10B981</color>     <!-- Neon Emerald (Active/Safe) -->
+    <color name="badge_green_bg">#0D281E</color>   <!-- Translucent Emerald BG -->
+    <color name="cyber_cyan">#06B6D4</color>       <!-- Cyber Cyan (Location/HUD) -->
+    <color name="cyan_light">#0C2A3A</color>       <!-- Translucent Cyan BG -->
+    <color name="button_gold">#F59E0B</color>      <!-- Electric Gold -->
+    <color name="avatar_bg">#F59E0B</color>
+    <color name="sos_red">#EF4444</color>          <!-- Critical Red -->
+    <color name="sos_red_light">#311317</color>    <!-- Translucent Red BG -->
+
+    <!-- Typography & Input Field Colors -->
+    <color name="text_primary">#F8FAFC</color>    <!-- Bright White Text -->
+    <color name="text_secondary">#94A3B8</color>  <!-- Slate Muted Gray -->
+    <color name="text_hud_cyan">#22D3EE</color>   <!-- Glowing Cyan Text -->
+    <color name="text_hud_emerald">#34D399</color><!-- Glowing Emerald Text -->
+    <color name="input_text_dark">#1A1A1A</color>  <!-- High Contrast Input Text -->
+    <color name="input_hint_gray">#757575</color>  <!-- Clear Visible Hint Text -->
+
+    <!-- Compatibility Color Definitions -->
+    <color name="icon_btn_bg">#1E293B</color>
+    <color name="map_placeholder">#0F172A</color>
+    <color name="text_link">#10B981</color>
+    <color name="avatar_mp">#0C2A3A</color>
+    <color name="avatar_rs">#2B1D0C</color>
+    <color name="fall_yellow">#F59E0B</color>
+    <color name="fall_yellow_light">#2B1D0C</color>
+    <color name="battery_grey">#475569</color>
+    <color name="battery_grey_light">#1E293B</color>
+    <color name="chip_selected">#1E293B</color>
+    <color name="badge_gold_bg">#2B1D0C</color>
+    <color name="relation_green">#10B981</color>
 </resources>

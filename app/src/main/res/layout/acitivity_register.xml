@@ -82,7 +82,30 @@
                 android:background="@drawable/bg_edittext"
                 android:hint="Enter parent full name"
                 android:inputType="textPersonName"
-                android:padding="16dp"/>
+                android:padding="16dp"
+                android:textColor="@color/input_text_dark"
+                android:textColorHint="@color/input_hint_gray"/>
+
+            <!-- Parent Email -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EMAIL ADDRESS"
+                android:textStyle="bold"
+                android:textColor="#666666"/>
+
+            <EditText
+                android:id="@+id/etParentEmail"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_edittext"
+                android:hint="Enter email address"
+                android:inputType="textEmailAddress"
+                android:padding="16dp"
+                android:textColor="@color/input_text_dark"
+                android:textColorHint="@color/input_hint_gray"/>
 
             <!-- Parent Phone -->
             <TextView
@@ -101,7 +124,9 @@
                 android:background="@drawable/bg_edittext"
                 android:hint="Enter 10-digit phone number"
                 android:inputType="phone"
-                android:padding="16dp"/>
+                android:padding="16dp"
+                android:textColor="@color/input_text_dark"
+                android:textColorHint="@color/input_hint_gray"/>
 
             <!-- Parent Age & Gender Row -->
             <LinearLayout
@@ -132,7 +157,9 @@
                         android:background="@drawable/bg_edittext"
                         android:hint="e.g. 35"
                         android:inputType="number"
-                        android:padding="16dp"/>
+                        android:padding="16dp"
+                        android:textColor="@color/input_text_dark"
+                        android:textColorHint="@color/input_hint_gray"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -177,7 +204,9 @@
                 android:background="@drawable/bg_edittext"
                 android:hint="e.g. Father, Mother, Guardian"
                 android:inputType="text"
-                android:padding="16dp"/>
+                android:padding="16dp"
+                android:textColor="@color/input_text_dark"
+                android:textColorHint="@color/input_hint_gray"/>
 
             <!-- Parent Password -->
             <TextView
@@ -196,7 +225,9 @@
                 android:background="@drawable/bg_edittext"
                 android:hint="Min 5 chars, 1 symbol, 2 numbers"
                 android:inputType="textPassword"
-                android:padding="16dp"/>
+                android:padding="16dp"
+                android:textColor="@color/input_text_dark"
+                android:textColorHint="@color/input_hint_gray"/>
 
             <!-- DIVIDER -->
             <View
@@ -232,7 +263,9 @@
                 android:background="@drawable/bg_edittext"
                 android:hint="Enter child full name"
                 android:inputType="textPersonName"
-                android:padding="16dp"/>
+                android:padding="16dp"
+                android:textColor="@color/input_text_dark"
+                android:textColorHint="@color/input_hint_gray"/>
 
             <!-- Child Age & Gender Row -->
             <LinearLayout
@@ -263,7 +296,9 @@
                         android:background="@drawable/bg_edittext"
                         android:hint="e.g. 10"
                         android:inputType="number"
-                        android:padding="16dp"/>
+                        android:padding="16dp"
+                        android:textColor="@color/input_text_dark"
+                        android:textColorHint="@color/input_hint_gray"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -308,7 +343,9 @@
                 android:background="@drawable/bg_edittext"
                 android:hint="Enter SafeTrack device ID (Optional)"
                 android:inputType="text"
-                android:padding="16dp"/>
+                android:padding="16dp"
+                android:textColor="@color/input_text_dark"
+                android:textColorHint="@color/input_hint_gray"/>
 
             <!-- Register Button -->
             <Button
